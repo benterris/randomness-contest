@@ -277,6 +277,24 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+// Handle touch input for mobile
+document.addEventListener('touchstart', (event) => {
+    const touch = event.touches[0];
+    const screenWidth = window.innerWidth;
+    const touchX = touch.clientX;
+
+    // Left third of screen
+    if (touchX < screenWidth / 3) {
+        event.preventDefault();
+        processKey('L');
+    }
+    // Right third of screen
+    else if (touchX > (screenWidth * 2) / 3) {
+        event.preventDefault();
+        processKey('R');
+    }
+}, { passive: false });
+
 // Toggle collapsible tallies section
 document.getElementById('tallies-header').addEventListener('click', () => {
     const content = document.getElementById('tallies-content');
@@ -286,7 +304,20 @@ document.getElementById('tallies-header').addEventListener('click', () => {
     icon.classList.toggle('open');
 });
 
-// Initialize display
+// Update instructions based on device type
+function updateInstructions() {
+    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const instructionElement = document.getElementById('control-instructions');
+
+    if (isMobile) {
+        instructionElement.textContent = 'Play by tapping the left or right side of the screen.';
+    } else {
+        instructionElement.textContent = 'Play by pressing the left or right arrow.';
+    }
+}
+
+// Initialize
+updateInstructions();
 updateDisplay();
 
 // Redraw graph on window resize
