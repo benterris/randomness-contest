@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Randomness Contest</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Randomness Contest</h1>
+        <p class="instructions">
+            <b>Try to beat the prediction</b> by being as random as possible. </br>
+            Play by pressing left or right arrow. </br>
+            You gain 1 point if I failed to predict your choice: otherwise you lose 1 point.
+        </p>
+
+        <div class="scores">
+            <h2>Your Scores against each strategy (higher is better)</h2>
+            <div class="score-grid">
+                <div class="score-item">
+                    <span class="strategy-name">1-gram:</span>
+                    <span class="score-value" id="score-1">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="strategy-name">2-gram:</span>
+                    <span class="score-value" id="score-2">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="strategy-name">3-gram:</span>
+                    <span class="score-value" id="score-3">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="strategy-name">4-gram:</span>
+                    <span class="score-value" id="score-4">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="strategy-name">5-gram:</span>
+                    <span class="score-value" id="score-5">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="graph-section">
+            <h2>Score Evolution</h2>
+            <canvas id="score-graph"></canvas>
+        </div>
+
+        <div class="history">
+            <h3>Last 20 moves:</h3>
+            <div id="move-history"></div>
+        </div>
+
+        <div class="explations-section">
+
+        <h2>Explanations</h2>
+
+        <p class="instructions">
+             How this works: I keep a running tally of the number of times you entered a certain sequence, and guess you will keep using your favorite sequences. 3-gram strategy keeps track of your sequences of 3 keypresses, and so on.
+        </p>
+
+        <div class="tallies">
+            <h2 class="collapsible-header" id="tallies-header">
+                View the strategy tallies <span class="toggle-icon">▶</span>
+            </h2>
+            <div class="tallies-content" id="tallies-content">
+                <div class="tally-section">
+                    <h3>1-gram:</h3>
+                    <div class="tally-content" id="tally-1">No data yet</div>
+                </div>
+                <div class="tally-section">
+                    <h3>2-gram:</h3>
+                    <div class="tally-content" id="tally-2">No data yet</div>
+                </div>
+                <div class="tally-section">
+                    <h3>3-gram:</h3>
+                    <div class="tally-content" id="tally-3">No data yet</div>
+                </div>
+                <div class="tally-section">
+                    <h3>4-gram:</h3>
+                    <div class="tally-content" id="tally-4">No data yet</div>
+                </div>
+                <div class="tally-section">
+                    <h3>5-gram:</h3>
+                    <div class="tally-content" id="tally-5">No data yet</div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
